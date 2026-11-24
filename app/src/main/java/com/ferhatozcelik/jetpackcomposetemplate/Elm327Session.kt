@@ -346,7 +346,6 @@ class Elm327Session(
                     },
                     enabled = state.isConnected && rawInput.isNotBlank()
                 ) {
-Use code with caution.
 Text("Send")
 }
 }
