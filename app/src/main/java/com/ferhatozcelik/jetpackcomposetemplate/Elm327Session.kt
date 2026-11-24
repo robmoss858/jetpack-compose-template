@@ -383,39 +383,4 @@ TextButton(onClick = { showDeviceDialog = false }) { Text("Cancel") }
 }
 }
 
----
 
-### Step 4: Replace `MainActivity.kt`
-1. Open the existing **`MainActivity.kt`** inside `app/src/main/java/com/ferhatozcelik/jetpackcomposetemplate/`.
-2. Tap the **Pencil (Edit)** icon, select all, replace it with this code, and tap **Commit changes**:
-
-```kotlin
-package com.ferhatozcelik.jetpackcomposetemplate
-
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val btClient = ElmBluetoothClient(applicationContext)
-        val viewModel = EscapeObdViewModel(btClient)
-
-        setContent {
-            MaterialTheme(colorScheme = darkColorScheme()) {
-                EscapeObdScreen(viewModel = viewModel)
-            }
-        }
-    }
-}
-
-1. Tap the Actions tab at the top of your repository.
-2. Wait for Build Debug APK to turn green (✅).
-3. Tap the finished run -> scroll down to Artifacts -> tap EscapeObdLab-APK.
-4. Extract the .zip in your phone's Downloads folder and tap app-debug.apk to install!
-Once you commit the files and trigger the build, let me know:
-• If the Actions build succeeds or if you hit any compiler error messages
-• Once it's installed on your phone and paired with your 2005 Escape, whether you want to tackle CSV/JSON DID export or Mode $27 Seed-Key next
