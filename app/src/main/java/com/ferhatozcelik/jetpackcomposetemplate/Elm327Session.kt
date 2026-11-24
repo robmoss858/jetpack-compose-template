@@ -56,7 +56,6 @@ class Elm327Session(
         }
     }
 }
-Use code with caution.
 
         try {
             socket?.close()
