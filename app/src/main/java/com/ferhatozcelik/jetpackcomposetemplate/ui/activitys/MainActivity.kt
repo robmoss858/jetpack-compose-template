@@ -1,25 +1,20 @@
-package com.ferhatozcelik.jetpackcomposetemplate.ui.activitys
+package com.ferhatozcelik.jetpackcomposetemplate
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.navigation.compose.rememberNavController
-import com.ferhatozcelik.jetpackcomposetemplate.navigation.NavGraph
-import com.ferhatozcelik.jetpackcomposetemplate.ui.theme.MyApplicationTheme
-import dagger.hilt.android.AndroidEntryPoint
+import androidx.compose.material3.darkColorScheme
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val btClient = ElmBluetoothClient(applicationContext)
+        val viewModel = EscapeObdViewModel(btClient)
+
         setContent {
-            MyApplicationTheme {
-                val navController = rememberNavController()
-                Surface(color = MaterialTheme.colorScheme.background) {
-                    NavGraph(navController = navController)
-                }
+            MaterialTheme(colorScheme = darkColorScheme()) {
+                EscapeObdScreen(viewModel = viewModel)
             }
         }
     }
